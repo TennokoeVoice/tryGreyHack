@@ -1,9 +1,9 @@
-//Upgrading the default nmap
+//Upgrading the default xmap
 //author: Grey Hack Gaming
 
-if params.len != 1 or params[0] == "-h" or params[0] == "--help" then exit(command_info("nmap_usage"))	
-if not is_valid_ip(params[0]) then exit("nmap: invalid ip address")
-if not get_shell.host_computer.is_network_active then exit("nmap: can't connect. No internet access.")
+if params.len != 1 or params[0] == "-h" or params[0] == "--help" then exit("<b>Usage: xmap [ip address]</b>")
+if not is_valid_ip(params[0]) then exit("xmap: invalid ip address")
+if not get_shell.host_computer.is_network_active then exit("xmap: can't connect. No internet access.")
 
 ipAddress = params[0]
 isLanIp = is_lan_ip(ipAddress)
@@ -14,7 +14,7 @@ else
    router = get_router(ipAddress)
 end if
 
-if router == null then exit("nmap: ip address not found")
+if router == null then exit("xmap: ip address not found")
 
 print_ports = function(ports)
    info = "PORT STATE SERVICE VERSION LAN"
@@ -33,7 +33,7 @@ print_ports = function(ports)
    print(format_columns(info) + "\n")
 end function
 
-print("\nStarting nmap v1.1 at " + current_date)
+print("\nStarting xmap v1.0 at " + current_date)
 print("Interesting ports on " + params[0] + "\n")
 print_ports(router.used_ports)
 
