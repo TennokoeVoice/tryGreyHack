@@ -1,6 +1,6 @@
 //decipher add recursive mode
 
-if params.len < 1 or params[0] == "-h" or params[0] == "--help" or (params.len == 2 and params[0] != "-R") then exit("<b>Usage: decipher [encrypted file] [opt:-R]</b>")
+if params.len < 1 or params[0] == "-h" or params[0] == "--help" or (params.len == 2 and params[0] != "-R") then exit("<b>Usage: decipher [opt:-R] [encrypted file]</b>")
 
 cryptools = include_lib("/lib/crypto.so")
 if not cryptools then
@@ -29,7 +29,7 @@ password = null
 if params.len == 2 then
 	for line in lines
 		userPass = line.split(":")
-		if line.len == 1 then exit()
+		if userPass.len <= 1 then exit()
 		print("Selected user: " + userPass[0] + "\nDeciphering...")
 		password = GetPassword(userPass)
 		if not password then
