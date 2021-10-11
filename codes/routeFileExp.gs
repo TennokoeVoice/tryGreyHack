@@ -30,9 +30,7 @@ GetFile = function()
 	end for
 end function
 
-flag = 1
-
-while flag == 1
+while true
 	targetPath = user_input("Enter [ls] or [cat] + /path > ")
 	if targetPath == "exit" then exit()
 	cmd = targetPath.split(" ")
